@@ -1,5 +1,5 @@
-# fxserver-arrival
-Keys script for FXServer
+# fxserver-Keys
+Keys script for FXServer  
 
 
 [DEPENDENCIES]  
@@ -9,8 +9,6 @@ Keys script for FXServer
 
 [INSTALLATION]   
 
-Set it as a dependency in you fxmanifest.lua  
-make sure fx_version up to 'adamant' version  
 
 ```
 start keys
