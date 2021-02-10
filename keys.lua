@@ -1,5 +1,8 @@
 
-
+RegisterNetEvent('AddKeyHelp')
+AddEventHandler('AddKeyHelp', function(data) 
+    Arrival.AddGroupData("KeyHelp",data)
+end)
 CreateThread(function()
    
     --{inputGroup, controlKey , helptext, x , y, z, distance}
@@ -19,6 +22,7 @@ CreateThread(function()
         IsControlJustPressed=function() print('hello') end} },
         
     } 
+    
     Arrival.RegisterTargets ('KeyHelp',{ 
         itemlist = keys,
         onEnter = 
@@ -35,15 +39,15 @@ CreateThread(function()
                                         stop()
                                          
                                         local agzi = Arrival.GetItemsByDistanceByNType('KeyHelp',1.0)
-
-                                        for i=1,#agzi do 
-                                            local v = agzi[i]
-                                            if v.helptext then 
+                                        
+                                        local Keys = {}
+                                        
+                                        for i=1,#(data) do 
+                                            local v = data[i]
                                             run('SET_DATA_SLOT')
                                                 send(i-1,GetControlInstructionalButton(v.inputGroup, v.controlKey, true), v.helptext)
-                                            stop()
-                                            end 
-                                        end    
+                                            stop() 
+                                        end      
                                          
                                         
                                         run('SET_BACKGROUND_COLOUR')
@@ -69,21 +73,21 @@ CreateThread(function()
         ,
         onSpam = 
                             function(data)
-
-                                local agzi = Arrival.GetItemsByDistanceByNType('KeyHelp',1.0)
-                                for i=1,#(agzi) do 
-                                        local v = agzi[i]
-                                       
-                                        if v.cbsendsors then 
-                                            for k,c in pairs(v.cbsendsors) do 
-                                                if _G[k] and  _G[k](v.inputGroup, v.controlKey ) then 
-                                                    c()
-                                                end 
+                                        local agzi = data
+                                            for i=1,#(agzi) do 
+                                                    local v = agzi[i]
+                                                   
+                                                    if v.cbsendsors then 
+                                                        for k,c in pairs(v.cbsendsors) do 
+                                                            if _G[k] and  _G[k](v.inputGroup, v.controlKey ) then 
+                                                                c()
+                                                            end 
+                                                        end 
+                                                    
+                                                    end 
                                             end 
-                                        
-                                        end 
-                                end 
-                            end
+                                       
+                                    end
         ,
         range = 1.0
         
