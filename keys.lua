@@ -4,7 +4,7 @@ AddEventHandler('AddKeyHelp', function(data)
     Arrival.AddGroupData("KeyHelp",data)
 end)
 CreateThread(function()
-   
+   SetEntityCoords(PlayerPedId(),-262.1,-966.1,31.2)
     --{inputGroup, controlKey , helptext, x , y, z, distance}
     --[[
     local keys  = 
@@ -38,7 +38,7 @@ CreateThread(function()
                                             send(200)
                                         stop()
                                          
-                                        local agzi = Arrival.GetItemsByDistanceByNType('KeyHelp',1.0)
+                                        
                                         
                                         local Keys = {}
                                         
